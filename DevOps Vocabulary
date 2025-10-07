@@ -10,3 +10,5 @@ CLoude Computing:
                 "Cloud computing is the on-demand delivery of IT resources—such as computing power, storage, and databases—over the internet, with pay-as-you-go pricing. 
                   Instead of owning and maintaining physical servers, organizations can access these virtual resources from a cloud provider like AWS, Azure, or Google Cloud, 
                   and only pay for what they use"
+
+Multitenancy: Sharing underlying hardware between virtual machines. 
