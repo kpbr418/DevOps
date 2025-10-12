@@ -1,1 +1,625 @@
 Goal: To Complete all Linux must to learn topics: Linux File System, Navigation, users, groups, permisssions.
+
+
+In Linux OS, Everything starts from /
+
+pwd 		--> print working directory
+cd			--> Change Direcory
+cd ..		--> One step back in the path
+ls			--> List everything in present directory
+
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+
+/ (Root Directory) : Top level directory, The parent of all other directories in Linux OS. (c:\)
+
+/root : (Root users home directory) : Root users private nworkspace. (c:\users\Administrator)
+
+/home : User's home directory : Home direcotry of all non-root users. If you create a user, you will get a directory for him automatically.
+
+/bin (Binary Executables) : Contains essential binary files used by all users. (eg: ls, mv, cp...).. We use these in basic system operations.. 
+
+/boot (Boot Loader Files) : Contains Linux Kernel and boot configuration and supported files. 
+
+/dev (Device Files) : Contains files that represents harware devices i.e; hard disks (Similar to windows Device manager).. 
+
+/etc (Configuration Files) : Sores system level configuration files.. User password, os info, dns info.. 
+
+/var (Variable Files) : Contains data that changes frequently (Db, logs, web content)
+
+
+---
+
+
+/usr (User Programs) : Contains user level programs and libraries.. 
+
+/sbin (System Binaries) : Contains system admin comamnds (ifconfig, iptables, firewall).. Only root and superusers can use these commands.
+
+/mnt (Mount points) : Temporaty mount points for system. 
+
+/media (Removable MEdia) : us, cd.. 
+
+/proc (Process information) : Process inforamtion
+
+/lib and /lib64 (Library files) : Contains shared libraries, that can be used by multiple programs. (similar to windows .dll)
+
+/opt (Optional Software) : Contains optional 3rd part softwares and add-ons.
+
+
+---
+
+
+whoami			--> tells you as what user you are working now
+hostname		--> Displays the instance/system name
+
+ls				--> List files and directory
+	ls -a		--> List all files including hidden directories
+
+touch			--> touch filename
+
+mkdir			--> Command to create a directory
+
+cd				--> Change directory
+
+cd /home/ec2-user/songs			--> We can navigate to absolute path
+
+Press "TAB" button "Twice" to see avaibale pdirectory when youa re navingting using "cd" command.
+
+
+---
+
+sudo 			--> superuser do
+sudo su			--> helps to switch root user
+
+
+hostnamectl		--> Provide complete info about hostname and system arch, kernel info.
+hostnamectl set-hostname avinash-ec2		--> Rename
+
+uptime
+uptime -p		--> Prints system uptime information
+
+
+man hostname
+
+history
+
+cp				--> For copy operarion (copy & paste)
+mv				--> For Move operation (cut & paste)
+
+cp <source> <target>
+
+cp song1.mp3 song2.mp3 songs/
+
+cp s* test/									--> Copy all the files, that names starts with "s"
+
+mv video1.mp4 video2.mp4 video3.mp4 videos/			--> Cut and paste
+
+touch song{1..10}.txt
+
+touch song1.mp3
+touch song2.mp3
+touch song3.mp3
+touch song4.mp3
+
+---
+
+mv : We can also use for rename purposes. 
+
+mv <wrong-name> <valid-name>
+mv aa.txt avinash.txt
+
+---
+
+rmdir		--> helps to delete only empty directory
+
+rm -rf
+
+---
+
+cat			--> Displays the entire content. (short files)
+
+more		--> Displays file contents pay by page. (long files)
+
+---
+
+cp /etc/passwd /home/ec2-user/
+cd /home/ec2-user/
+
+  171  head passwd 
+  172  tail passwd 
+  173  cat passwd 
+  174  head -n 2 passwd 
+  175  head -n 3 passwd 
+  176  tail -n 3 passwd 
+  177  cat passwd 
+  178  sort passwd 
+  179  sort -r passwd
+
+
+---
+
+grep : global regular expression print 
+
+grep "word" filename.txt		--> Search for given word in filename. (case sensitive)
+
+grep -i "word" filename.txt		--> Search for given word in filename. (case in-sensitive)
+
+grep "word" file1.txt file2.txt file3.txt	--> Search for given word in multiple files
+
+grep -r "word" /path-to-directory		--> search in multiple files inside a directory
+
+---
+
+vi		--> Original text editor
+vim 	--> Text editor, Improved version of VI
+
+vim new.txt					--> It creates a new file named "new.txt" and allow us to work on it.
+vim first.txt				--> Open the first.txt file and allow us to work on it.
+
+Command Mode : Navigation, deletion.. 
+Insert Mode : We can edit the content.. 
+
+---
+
+:wq			--> Write the changes and quit from the editor.
+:q!			--> Quit vim without saving changes.
+
+---
+When we are in "command mode"..
+
+k : cursor one line up
+j : cursor one line down
+o : Open a new line and enters the insert mode in that new line.
+x : Delete the character before the cursor
+
+db : Delete the entire word befor the cursor.
+dd : Delete the entire line where your cursor is placed.
+5dd : Delete the next 5 lines starting from the current line (Cursor line)
+10dd : Delete the next 10 lines starting from the current line (Cursor line)
+
+:set number	--> automatically sets the line numbers
+:set nonumber	--> Removes the line numbers
+
+nG : (n is line number) : Takes our cusror to specific line number.
+ex: 7G --> Takes our cursor to line num 7.
+
+u (small u) : undo the last change.
+cntrl + r : Redo the undone changes.
+
+---
+
+dnf install zip -y
+dnf install unzip -y
+
+
+zip files.zip file1.txt file2.txt file3.txt
+
+zip allfiles.zip *  --> Pics all files from current location and added to zip
+
+zip -r myfolder.zip myfolder/
+
+---
+
+unzip myzip.zip
+
+unzip -l test.zip 		--> Shows the files inside a zip without extracting.
+
+----
+How to deal with .tat.gz files
+
+tar -czvf files.tar.gz file1 file2 file3
+
+unzip a tar.gz : tar -xzvf songs.tar.gz			--> Will extract / unzip
+
+tar -ztvf songs.tar.gz 				--> Shows the files inside the zipped file
+
+
+----
+
+-czvf
+
+
+c --> create archive
+z --> compress
+v --> verbose
+f --> file name
+
+
+----
+
+echo "hi"
+
+echo "hello from avinash" >> aa.txt			--> it will append to the aa file, output added as new line
+echo "hello from avinash" > aa.txt			--> it will overwrite to the aa file, existing data will be overwritten.
+
+---
+
+RPM : Redha Package Manager : Manages installation, updates, removal of S/w. 
+
+rpm -ivh package.rpm
+
+--> Cant resolve dependencies automatically. Requires us to download and manages the dependencies manually.
+
+--
+
+YUM (Yellowdog updater Modified) : 
+--> Resolves dependencies automatically. Retrive p[ackages from local/global repos. 
+
+yum install httpd/nginx/mysql
+yum search httpd
+yum remove httpd/nginx/mysql
+
+--
+
+DNF (Dandified YUM) : Modern package mnager. Newer linux distributions are using this dnf.
+
+--> Faster dependencies resolution. Plugin based architecture. Secure. 
+
+
+dnf install httpd/nginx/mysql
+dnf search httpd
+dnf remove httpd/nginx/mysql
+dnf list installed
+
+---
+
+All Repos path : /etc/yum.repos.d/ 
+
+
+dnf update			
+
+dnf install <package-name>
+
+dnf search tree				--> Search for a package (Based on name and description)
+
+dnf list installed			--> View all installed packages
+
+
+dnf install httpd -y		--> Installs apache webpage
+
+systemctl status httpd		--> provide status of httpd service
+systemctl start httpd		--> starts httpd service
+systemctl restart httpd		--> restarts httpd service
+
+
+service httpd start/stop/restart	= systemctl start/stop/restart httpd
+chkconfig httpd on					= systemctl enable httpd
+
+
+systemctl enable httpd		--> Enables httpd service. Service will start automatically after stop/start / restart..
+
+
+Sanity Check / Validation : We verify the status of the service or status of the resources affected with the operation we performed.
+
+
+--> ctrl+r --> type "services.msc" --> Startup type.
+
+---
+
+Apache configuration path : /etc/httpd/conf/httpd.conf
+nginx config path : /etc/nginx/nginx.conf
+
+---
+
+DocumentRootPath 
+Apache : /var/www/html/
+nginx: /usr/share/nginx/html/
+
+---
+
+telnet.?? 
+
+telnet 3.110.48.184 80
+
+---
+
+PID : Process ID
+
+
+top : shows realtime view of running processes, system load, cpu and memory usage.. 
+ps : process snapshot : Shows the snapshot of current processes.
+
+sleep 120 &
+ps
+
+ps aux
+
+a - Shows process of all users
+u - user/owner of the process
+x - proceeses not attached to any terminal
+
+ps aux | grep sleep
+
+---
+
+We can get process id of the service
+
+pidof nginx				--> Search for nginx processes ids
+
+pkill nginx				--> Kill nginx processes
+
+pgrep httpd				--> Run Grep for httpd processes
+
+---
+
+dnf install htop -y
+
+htop : Interactive version of top command with color and better UI.
+
+---
+
+kill <pid>
+
+---
+
+SIGKILL --> 9
+
+kill -9 <pid>
+
+pstree		--> Shows the process tree
+pstree | less
+
+--
+
+free
+
+free -h
+free -g
+
+memory = ram
+
+
+---
+
+useradd <username>			--> create a new user 
+adduser <username>			--> create a new user 
+id <username>				--> Displays the users id
+
+su <username>				--> Switch to the user, when you are working as root user.
+su <username>				--> Switch to the user along with password, when you are working as non-root user.
+
+usermod -aG wheel <username> -> Modify user group, add user to wheel group for sudo permissions.
+groups <username>			--> Lists the groups the user member of.
+
+whoami						-->
+
+su - <username>
+su <username>				--> you can switch to newly created user.
+
+groupadd <grp-name>			--> Created a group
+
+gpasswd	-a <username> <grobname> -> Remove user fro a group
+
+deluser	<username>			--> Delete the user.
+
+---
+
+To directly login as a user.. You need to edit the sshd configuration.. Enable "Password authentication to yes".
+
+sshd --> /etc/ssh/sshd_config
+
+PasswordAuthentication Yes			#Line no: 65
+
+Restart the sshd service.. 
+
+---
+
+Permissions Management: 
+
+
+Numeric / Octal Notation : 
+
+4 - r - Read 
+2 - w - write
+1 - x - execute
+
+We can set these permisisons at 3 levels:
+
+user - u
+group - g
+others - o
+
+777
+
+4+2+1 = 7 -> Read, Write and Execute
+4+2+0 = 6 -> Read and Write permisisons
+4+0+1 = 5 -> Read and Execute permisisons
+4+0+0 = 4 -> Read Only permisisons
+0+2+1 = 3 -> Write and Execute
+0+2+0 = 2 -> Only Wite access
+0+0+1 = 1 -> Only Execute permissions
+0+0+0 = 0 -> No access/permissions
+
+
+chomd 400 filename
+
+rw- r-- r--   1 root root     0 Aug 29 05:08 a.txt
+
+
+chown avinash a.txt				--> changing owner of a file
+
+chgrp developers a.txt			--> Changing group of a file
+
+chown -R avinash /data			--> Changing ownership of a directory
+
+ls -l
+ll
+
+stat 		--> Detailed view
+getfacl		--> View Access Control list of a directory or file
+
+stickybit permisisons : Anyone can create files, but only owner can delete.
+
+chmod 1777 team_temp
+
+cat /etc/group			--> List all the groups and members you have in the instance.
+
+---
+
+Cronjob : TIme based job/task scheduler.. 
+
+user specific : /var/spool/cron
+system wide : /etc/crontab
+
+crontab.guru
+
+Minutes hour day month day_of_week command
+
+
+--> Every minute, I want to write a msg to a file.. 
+
+sudo dnf install cronie cronie-anacron -y
+
+* * * * * sh /home/ec2-user/hello.sh
+
+---
+
+sudo -u avinash crontab -e
+
+@daily echo "$(date) - Uptime: $(uptime)"  >> home/avinash/uptime.log
+
+find /tmp -type f -atime +7 -delete
+
+------
+
+
+SCP (Secure Copy):
+
+
+scp [options] {source} {destination}
+
+scp myfile.txt ec2-user@192.168.100.1:/home/ec2-user/
+
+scp -r project-data/ ec2-user@192.168.100.1:/home/ec2-user/
+
+scp -i keypair.pem myfile.txt ec2-user@192.168.100.1:/home/ec2-user/
+
+---
+
+NIC : network interface Card..
+ENI : Elastic network interface.. 
+
+
+Linux : ip addr
+
+Linux : ifconfig
+
+windows: comnnad prompt --> ipconfig (or) ipconfig /all
+
+
+sudo dnf install httpd -y && sudo systemctl enable httpd --now
+
+ss -tulnp
+
+sudo lsof -i :80
+
+--
+
+sudo dnf install bind-utils
+
+nslookup google.com
+host google.com
+dig google.com
+
+---
+
+telnet {ip} {port}
+
+telnet alternative : openssl
+
+openssl s_client -connect <ip-address>:<port>
+
+
+---
+
+
+EBS : Elastic Block Storage : Block Based Storage.. 
+
+IOPS : Input and output operations per second.
+
+Storage : 
+Block Size : Size of the data blocks being read/write. 4 kb / 8 KB.
+Latency : Time taken to process a single I/O operation
+Throughput : Mb/S
+
+IOPS Formula :
+
+IOPS = Throughput x 1024 / BlockSize
+400 x 1024 / 8 = 51200 IOPS
+
+root volume : Contqains Operating System.. : gp2, gp3, io1, io2, magnetic.. 
+
+SSD : Solid state drive : Latest and better performance.. : gp2, gp3, io1, io2..
+
+General purpose SSD : gp2, gp3.. Most common workloads.. We can get max of 16,000 IOPS only..
+gp2 : 3 IOPS per GB, with minimum of 100 IOPS.. 100 gb = 300 iops.. Min size : 1 GB.. Max 16 TB
+gp3 : Can adjust required IOPS count.. Min size : 1 GB.. Max 16 TB
+
+Provisioned IOPS SSD : io1, io2.. Best performance.. Workloads that requires specific IOPS or exceeding 16,000 IOPS.. Min size : 4 GB.. Max 16 TB
+
+
+HDD : Harddisk drive : older generation.. Less performance compared to SSD.. : sc1 and st1
+
+Throughpout Optimised HDD (st1): Suitable for big data, data warehousing, log processing.. Min size : 125 GB.. Max 16 TB
+Cold HDD (sc1) : Same as ST1, but less perf with less cost.. Min size : 125 GB.. Max 16 TB
+
+Magnetic (standard): low-cost storage solutions.. outdated.. Less frequently accessed..  Min size : 1 GB.. Max 1 TB..
+
+---
+
+lsblk : Lists all the block based storages attached to the istance..
+
+df -Th : Lists Storage devices detected and used by OS.. It displays Temp volumes as well.
+
+---
+
+
+nvme1n1
+
+path : /dev/nvme1n1		--> 1 gb volume
+
+mkdir newvol/
+
+
+mkfs -t xfs /dev/nvme1n1
+
+
+
+mount /dev/nvme1n1 newvol/
+
+when we did mount operation.. We have to add an entry in "/etc/fstab" file..
+
+After performing temporary mount, you get an entry in "/etc/mtab"" file. 
+Get the entry information from "/etc/mtab" and write same to "/etc/fstab"..
+
+/dev/nvme1n1 /home/ec2-user/newvol xfs rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,sunit=8,swidth=8,noquota 0 0
+
+volume should have file system.. 
+
+Windows : NTFS, FAT32, ReFs
+Linux : ext3, ext4, xfs..
+
+---
+
+Increase an Existing EBS volume size.. 
+
+1. Increase it in AWS console.. 
+
+xfs_growfs -d /home/ec2-user/newvol
+
+2. Then run "xfs_growfs" command to increase the size.
+
+In increase a specific partition.. use "growpart" command..
+
+growpart /dev/nvme0n1 1
+
+
+---
+
+mount -o remount,size=4G /tmp
+
+/etc/fstab write an entry for /tmp size
+
+tmpfs /tmp tmpfs defaults,size=4G 0 0 
+
+---
