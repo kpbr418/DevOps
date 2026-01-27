@@ -10,5 +10,47 @@ CLoude Computing:
                 "Cloud computing is the on-demand delivery of IT resources—such as computing power, storage, and databases—over the internet, with pay-as-you-go pricing. 
                   Instead of owning and maintaining physical servers, organizations can access these virtual resources from a cloud provider like AWS, Azure, or Google Cloud, 
                   and only pay for what they use"
+------------------------------------------------------------
+                                                Role and Responsibility:
 
+Business Analyst
+Gathers and documents customer requirements.
+
+Product Manager
+Defines the vision, goals, and priorities.
+
+Product Owner
+Manages backlog and converts vision into actionable stories.
+
+UI/UX Designer
+Designs user interface and user experience.
+
+Software Architect
+Designs technical system structure and frameworks.
+
+Developers
+Build the actual product (UI, APIs, databases).
+
+DBA
+Designs and manages the database.
+
+Security Engineer
+Ensures product and infrastructure security.
+
+QA Engineer
+Tests product quality and performance.
+
+DevOps Engineer
+Builds CI/CD pipelines and manages environments.
+
+Release Manager
+Plans and manages releases.
+
+SRE
+Ensures uptime, performance, and reliability post-release.
+
+Technical Writer
+Creates documentation for users and developers.
+
+----------------------------------------------------------------------------------
 Multitenancy: Sharing underlying hardware between virtual machines. 
