@@ -1,6 +1,20 @@
+Order matters 👇
+1️⃣ Linux
+2️⃣ Git (real workflows)
+3️⃣ Networking (only what DevOps needs)
+4️⃣ Azure basics
+5️⃣ CI/CD
+6️⃣ Docker
+7️⃣ Kubernetes
+8️⃣ Terraform
+
+
 Devops: DevOps is a cultural philosophy, methodology, and set of practices that unites development and operations teams.
         DevOps enables organisations to improve their product delivery at high velocity and with greater reliability through 
         its continuous integration, automated testing, and continuous monitoring to ensure product quality.
+        
+        DevOps is about automating everything between
+                "Code → Build → Test → Deploy → Monitor"
 
 
 CLoude Computing:
