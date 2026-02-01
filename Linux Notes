@@ -79,9 +79,10 @@ uptime
 uptime -p		--> Prints system uptime information
 
 
-man hostname
+man -> gives toplevel descritin of all commands like -- help
+hostname -> give the hostname of the system
 
-history
+history - lists all the cmds that perfromed in a particular terminal sessiom
 
 cp				--> For copy operarion (copy & paste)
 mv				--> For Move operation (cut & paste)
@@ -112,7 +113,7 @@ mv aa.txt avinash.txt
 
 rmdir		--> helps to delete only empty directory
 
-rm -rf
+rm -rf		--> helps to delete whole directory with contents
 
 ---
 
@@ -623,3 +624,267 @@ mount -o remount,size=4G /tmp
 tmpfs /tmp tmpfs defaults,size=4G 0 0 
 
 ---
+---------------------------------------------------------------------------------------------------------------commands gpt----------------------------------------------------------------
+Got it 👍
+Here’s a **clean, practical master list of Linux commands** that are **commonly required for DevOps, Cloud, and Shell Scripting engineers**, with **short, interview-friendly descriptions**.
+I’ve grouped them so it’s easy to learn + revise.
+
+---
+
+## 🧠 1. Basic File & Directory Commands (Foundation)
+
+These are **must-know**.
+
+| Command | Description                    |
+| ------- | ------------------------------ |
+| `pwd`   | Show current working directory |
+| `ls`    | List files and directories     |
+| `ls -l` | Detailed list with permissions |
+| `ls -a` | Show hidden files              |
+| `cd`    | Change directory               |
+| `mkdir` | Create directory               |
+| `rmdir` | Delete empty directory         |
+| `touch` | Create empty file              |
+| `cp`    | Copy files/directories         |
+| `mv`    | Move or rename files           |
+| `rm`    | Delete files                   |
+| `rm -r` | Delete directory recursively   |
+| `stat`  | Show file details              |
+
+---
+
+## 📄 2. File Viewing & Editing
+
+Very important for logs, configs, scripts.
+
+| Command    | Description                    |
+| ---------- | ------------------------------ |
+| `cat`      | Display file content           |
+| `tac`      | Display file in reverse        |
+| `less`     | View file page by page         |
+| `more`     | Basic file viewer              |
+| `head`     | Show first lines               |
+| `tail`     | Show last lines                |
+| `tail -f`  | Live log monitoring            |
+| `nl`       | Number file lines              |
+| `wc`       | Count lines, words, characters |
+| `vi / vim` | Text editor (DevOps favorite)  |
+| `nano`     | Simple editor                  |
+
+---
+
+## 🔍 3. Search & Text Processing (🔥 VERY IMPORTANT)
+
+Used heavily in **logs, automation, CI/CD**.
+
+| Command   | Description                    |
+| --------- | ------------------------------ |
+| `grep`    | Search text patterns           |
+| `grep -i` | Case-insensitive search        |
+| `grep -r` | Recursive search               |
+| `awk`     | Text processing & parsing      |
+| `sed`     | Stream editor (find & replace) |
+| `cut`     | Extract columns                |
+| `sort`    | Sort text                      |
+| `uniq`    | Remove duplicate lines         |
+| `tr`      | Translate characters           |
+| `xargs`   | Convert input to arguments     |
+
+---
+
+## 🔐 4. File Permissions & Ownership
+
+Critical for **servers, security, containers**.
+
+| Command  | Description                 |
+| -------- | --------------------------- |
+| `chmod`  | Change file permissions     |
+| `chown`  | Change file owner           |
+| `chgrp`  | Change group                |
+| `umask`  | Default permission settings |
+| `id`     | Show user ID                |
+| `whoami` | Current user                |
+
+---
+
+## 👤 5. User & Group Management
+
+Used in production servers.
+
+| Command    | Description         |
+| ---------- | ------------------- |
+| `useradd`  | Create user         |
+| `usermod`  | Modify user         |
+| `userdel`  | Delete user         |
+| `groupadd` | Create group        |
+| `groupdel` | Delete group        |
+| `passwd`   | Change password     |
+| `su`       | Switch user         |
+| `sudo`     | Run command as root |
+
+---
+
+## ⚙️ 6. Process & System Management
+
+🔥 **Top DevOps interview area**
+
+| Command   | Description                  |
+| --------- | ---------------------------- |
+| `ps`      | Show running processes       |
+| `ps -ef`  | Full process list            |
+| `top`     | Real-time process monitoring |
+| `htop`    | Enhanced top                 |
+| `kill`    | Kill process                 |
+| `kill -9` | Force kill                   |
+| `nice`    | Set priority                 |
+| `uptime`  | System running time          |
+| `watch`   | Run command repeatedly       |
+| `time`    | Execution time               |
+
+---
+
+## 💾 7. Disk & Memory Management
+
+Used in **cloud VMs, servers**.
+
+| Command   | Description       |
+| --------- | ----------------- |
+| `df -h`   | Disk usage        |
+| `du -sh`  | Directory size    |
+| `free -h` | Memory usage      |
+| `lsblk`   | Block devices     |
+| `mount`   | Mount filesystem  |
+| `umount`  | Unmount           |
+| `fdisk`   | Disk partitioning |
+
+---
+
+## 🌐 8. Networking Commands
+
+Essential for **cloud & troubleshooting**.
+
+| Command      | Description        |
+| ------------ | ------------------ |
+| `ip a`       | Show IP addresses  |
+| `ip r`       | Routing table      |
+| `ifconfig`   | Network interfaces |
+| `ping`       | Check connectivity |
+| `netstat`    | Network statistics |
+| `ss`         | Socket statistics  |
+| `curl`       | API & URL testing  |
+| `wget`       | Download files     |
+| `telnet`     | Test ports         |
+| `traceroute` | Network path       |
+| `nslookup`   | DNS lookup         |
+| `hostname`   | System hostname    |
+
+---
+
+## 📦 9. Package Management
+
+Depends on distro (AWS/Azure mostly).
+
+### RHEL / CentOS / Amazon Linux
+
+| Command       | Description     |
+| ------------- | --------------- |
+| `yum install` | Install package |
+| `yum remove`  | Remove package  |
+| `yum update`  | Update system   |
+| `dnf`         | Newer yum       |
+
+### Ubuntu / Debian
+
+| Command       | Description     |
+| ------------- | --------------- |
+| `apt update`  | Update repo     |
+| `apt install` | Install package |
+| `apt remove`  | Remove package  |
+
+---
+
+## 📁 10. Archiving & Compression
+
+Used for backups & deployments.
+
+| Command    | Description    |
+| ---------- | -------------- |
+| `tar`      | Archive files  |
+| `tar -czf` | Create tar.gz  |
+| `tar -xzf` | Extract tar.gz |
+| `zip`      | Zip files      |
+| `unzip`    | Extract zip    |
+| `gzip`     | Compress       |
+| `gunzip`   | Decompress     |
+
+---
+
+## 🔄 11. Redirection & Pipes (🔥 Shell Scripting Core)
+
+| Symbol | Description     |             |
+| ------ | --------------- | ----------- |
+| `>`    | Output redirect |             |
+| `>>`   | Append output   |             |
+| `<`    | Input redirect  |             |
+| `      | `               | Pipe output |
+| `2>`   | Error redirect  |             |
+| `&>`   | All output      |             |
+
+---
+
+## 🧾 12. Shell Scripting Commands
+
+Used in **CI/CD, automation**.
+
+| Command   | Description              |
+| --------- | ------------------------ |
+| `echo`    | Print output             |
+| `read`    | Take input               |
+| `export`  | Set env variable         |
+| `env`     | List env variables       |
+| `set`     | Shell options            |
+| `unset`   | Remove variable          |
+| `source`  | Run script in same shell |
+| `crontab` | Schedule jobs            |
+| `at`      | One-time job             |
+
+---
+
+## 🧰 13. System Services (systemd)
+
+Used in production servers.
+
+| Command             | Description     |
+| ------------------- | --------------- |
+| `systemctl start`   | Start service   |
+| `systemctl stop`    | Stop service    |
+| `systemctl restart` | Restart service |
+| `systemctl status`  | Check status    |
+| `systemctl enable`  | Enable on boot  |
+| `journalctl`        | View logs       |
+
+---
+
+## 🐳 14. DevOps-Specific Linux Usage
+
+Frequently used with tools.
+
+| Command   | Description           |
+| --------- | --------------------- |
+| `nohup`   | Run job in background |
+| `screen`  | Persistent sessions   |
+| `tmux`    | Terminal multiplexer  |
+| `alias`   | Shortcut commands     |
+| `history` | Command history       |
+
+---
+
+## ✅ What you should focus first (for DevOps 👇)
+
+1. `grep`, `awk`, `sed`
+2. `ps`, `top`, `kill`
+3. `df`, `du`, `free`
+4. `curl`, `ping`, `netstat`
+5. Permissions (`chmod`, `chown`)
+6. Redirection & pipes
+
