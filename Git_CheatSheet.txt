@@ -1,0 +1,155 @@
+Perfect 👍
+Here’s a **clean, copy-paste friendly Git & GitHub cheat sheet** exactly in the format you asked for:
+
+> **Key = Command**
+> **Value = Description**
+
+---
+
+# 🧾 Git & GitHub Cheat Sheet (Command → Description)
+
+---
+
+## 🔹 Configuration
+
+```
+git --version                 → Check installed Git version
+git config --global user.name → Set global username
+git config --global user.email→ Set global email
+git config --list             → View all Git configurations
+```
+
+---
+
+## 🔹 Repository Setup
+
+```
+git init                      → Initialize a new Git repository
+git clone <url>               → Clone a remote repository
+```
+
+---
+
+## 🔹 File Status & Tracking
+
+```
+git status                    → Show working directory status
+git add <file>                → Add file to staging area
+git add .                     → Stage all changes
+git restore --staged <file>   → Unstage a file
+```
+
+---
+
+## 🔹 Commit Management
+
+```
+git commit -m "msg"           → Commit staged changes
+git commit --amend            → Modify last commit
+```
+
+---
+
+## 🔹 Branching
+
+```
+git branch                    → List branches
+git branch <name>             → Create a new branch
+git checkout <branch>         → Switch branch
+git checkout -b <branch>      → Create and switch branch
+git branch -d <branch>        → Delete branch
+```
+
+---
+
+## 🔹 Merging & Rebasing
+
+```
+git merge <branch>            → Merge branch into current branch
+git rebase <branch>           → Reapply commits on another base
+```
+
+---
+
+## 🔹 Remote Repositories (GitHub)
+
+```
+git remote add origin <url>   → Add remote repository
+git remote -v                 → Show remote URLs
+git push origin <branch>      → Push branch to remote
+git push -u origin <branch>   → Push and set upstream
+git pull origin <branch>      → Fetch and merge from remote
+git fetch                     → Fetch updates without merging
+```
+
+---
+
+## 🔹 Logs & History
+
+```
+git log                       → Show commit history
+git log --oneline             → Show compact commit history
+git diff                      → Show file differences
+```
+
+---
+
+## 🔹 Undo & Reset (Important ⚠️)
+
+```
+git restore <file>            → Discard file changes
+git reset --soft HEAD~1       → Undo commit, keep changes
+git reset --hard HEAD~1       → Undo commit and changes
+git revert <commit_id>        → Create new commit that undoes changes
+```
+
+---
+
+## 🔹 Stash
+
+```
+git stash                     → Save uncommitted changes
+git stash list                → View stashed changes
+git stash apply               → Reapply last stash
+git stash drop                → Delete stash
+```
+
+---
+
+## 🔹 Tags
+
+```
+git tag <tag>                 → Create a tag
+git tag                       → List tags
+git push origin <tag>         → Push tag to remote
+```
+
+---
+
+## 🔹 Advanced / Interview Commands ⭐
+
+```
+git cherry-pick <commit_id>   → Apply specific commit
+git blame <file>              → Show who changed each line
+git show <commit_id>          → Show commit details
+git reflog                    → Show reference log history
+```
+
+---
+
+## 🔹 GitHub Workflow
+
+```
+git checkout -b feature       → Create feature branch
+git push origin feature       → Push feature branch
+```
+
+---
+
+## 🔹 .gitignore
+
+```
+.gitignore                    → Specify files Git should ignore
+```
+
+---
