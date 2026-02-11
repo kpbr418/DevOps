@@ -1,0 +1,300 @@
+
+
+Public IP Address : Globally unique IP address allocated to a device. In our home n/w ISP (Internet Service provider) allocates a public IP for our network.
+
+Private IP Address : used within an internal network and it also should be unique but within the network.
+
+IPv4 : 32 bit address space.. 2^32 --> 4.3 billion..
+IPv6 : 128 bit address space.. 2^128 --> 340 undecillions..
+
+
+How to identify Public and Private IP address of a machine.
+
+Private : ipconfig /all     (mac: ip addr / ifconfig / ip)
+Public : iplocation.io / whatismyip.com / whatismyipaddress.com
+
+---
+
+IPv4 has 5 classes
+
+Class A : 0.0.0.0 - 126.255.255.255
+Class B : 128.0.0.0 - 191.255.255.255
+Class C : 192.0.0.0 - 223.255.255.255
+
+Class D : 224.0.0.0 - 239 : Multicasting
+Class E : 240.0.0.0 - 255 : Reserved
+
+127 --> loopback address..
+
+===
+
+Private IP Address Ranges : 
+
+Class A : 10.0.0.0 - 10.255.255.255
+Class B : 172.16.0.0 - 172.31.255.255
+Class C : 192.168.0.0 - 192.168.255.255
+
+===
+
+Network : Group of inter connected devices. : N
+Host : a device with in a network. : H
+
+CLass A : N.H.H.H
+CLass B : N.N.H.H
+CLass C : N.N.N.H
+
+---
+
+Class A : 0.0.0.0 - 126.266.266.266 
+Class A : N.H.H.H
+--> How many Networks we can create.? Ans: 127 network
+--> How many Hosts we can create, in a single network.? Ans: 16 million hosts
+
+Class B : 128.0.0.0 - 191.255.255.255
+Class B : N.N.H.H
+--> How many Networks we can create.? Ans:  16,000 Network
+--> How many Hosts we can create, in a "single network".? Ans:  65k hosts
+
+Class C : 192.0.0.0 - 223.255.255.255
+Class C : N.N.N.H
+--> How many Networks we can create.? Ans:  2 millions Network
+--> How many Hosts we can create, in a "single network".? Ans: 256 hosts
+
+---
+
+Subnetting: The process of dividing a larger network into smaller subnetworks.
+
+CIDR : Classless Inter Domain Routing : 
+
+
+IPv4 : 32 bit.. 
+
+/32 --> 32 - 32 = 0 ==> 2^0 ==> 1
+/31 --> 32 - 31 = 1 ==> 2^1 ==> 2
+/30 --> 32 - 30 = 2 ==> 2^2 ==> 4
+/29 --> 32 - 29 = 3 ==> 2^3 ==> 8
+/28 --> 32 - 28 = 4 ==> 2^4 ==> 16		--> Min a VPC Supports
+/24 --> 32 - 24 = 8 ==> 2^8 ==> 256
+/20 --> 32 - 20 = 12 ==> 2^12 ==> 4096
+/16 --> 32 - 16 = 16 ==> 2^16 ==> 65536	--> Max a VPC Supports
+
+TechSpec : Technical Specification Document
+
+--> We cannot use all the IPs..  
+
+We cannot use First IP and Last IP of any network (not only in Cloud)...
+In AWS, Along with regular 2 IPs, AWS Reserves 3 more IPs...
+
+1. Network ID : First IP
+2. broedcost IP : Last IP
+3. AWS DNS Server: Second IP address
+4. AWS VPC Route :Third IP Address
+5. Future Usage ; 1 IP Address
+
+/24 --> 256 IPs ==> 256 - 5 ==> 251 Usable IPs
+/28 --> 16 IPs ==> 16 - 5 ==> 11 Usable IPs
+
+
+A client is lookking a very small network for his VPC, he is planning to launch 12 ec2 instance.. Which subnet you suggest.??
+
+/28 --> 16 IPs X
+/27 --> 32 IPs 
+
+---
+
+Entire VPC
+
+/24 --> 32 - 24 = 8 ==> 2^8 ==> 256
+
+Subnets: 
+Public SUbnets : internet Facing
+App Subnets : App Servers, w/o internet
+DB Subnets : Db
+
+=======
+
+
+CIDR Planning : 
+--> How big VPC we required.? Ans : 192.168.0.0/23
+--> How many Subnets we required.? Ans : 6 subnets... 
+--> How many Public Subnets.?  Ans : 2 Public : 192.168.0.0/26, 192.168.0.64/26	
+--> how many Private Subnets.? Ans : 4 private (App & DB) : 192.168.0.128/26, 192.168.0.192/26, 192.168.1.0/26	and 192.168.1.64/26 
+--> Any future plans, so we can reserve.? Ans : Yes.. 192.168.1.128/26 & 192.168.1.192/26
+
+
+8 Subnets
+2 --> Web/Public
+2 --> App/Private
+2 --> DB/Private
+2 --> Lambda/Private
+
+Public Subnet : Internet Facing
+Private Subnet : No direct exposure to outer world.. 
+	--> Private Subnet with Internet (NAT gateway).. (Patching, External endpoints)
+	--> Private Subnet without internet
+
+
+Step 1 : Create a VPC with Decided CIDR : 192.168.0.0/23
+Step 2 : Create Subnets within this VPC.
+
+	WEB-CVPC-1A : 192.168.0.0/26
+	WEB-CVPC-1B : 192.168.0.64/26
+	APP-CVPC-1A : 192.168.0.128/26
+	APP-CVPC-1B : 192.168.0.192/26
+	DB-CVPC-1A : 192.168.1.0/26
+	DB-CVPC-1B : 192.168.1.64/26 
+
+Step 3 : Create an IGW / Internet gateway and attach to VPC. 
+
+Step 4 : Create Required Route Tables.
+
+	Public Route: Add subnets you want to make it Public. ** Add a route via "Internet Gateway".
+	Private Route: Add subnets you want to make it private.
+
+Step 5 (Optional but Recommended) : Enable DNS Hostnames at VPC Level and Enable "auto assign public ip" for public subnets.
+
+--
+
+launch an ec2 instance in "CVPC's Public Subnet".. 
+launch an ec2 instance in "CVPC's Private Subnet".. 
+
+Jump Server / Bastian Host : Its a dedicated ec2 instance, runs in custom VPCs publicsubnet. We can use this machine to connect to CustomVPCs private subnet ec2 instances. 
+
+---
+
+NAT gateway : Its a virtual component runs in customVPC public SUbnet., Designed to provide internet for Private subnet ec2 instances.
+** We can have multiple NAt gateways for our workload.
+
+---
+
+Flow Logs : Enable logging at VPC level.
+
+---
+
+NACL : Network Access Control List : 
+--> SG act as firewall at Instance Level..
+--> NACL act as firewall at Subnet Level..
+
+--> SG dont have option to deny the traffic.. Only allow possible.. 
+--> NACL have option to Deny/allow the traffic...
+
+--> SG are stateful.. We have to take care about "inbound rules" only..
+--> NACLs are Stateless.. We have to take care about "inbound" and "outbound" rules..
+
+--> One subnet can be member of only 1 NACL at a time.. 
+
+Works similar to Security groups, but works at Subnet level.. 
+
+---
+
+Gateway Endpoint : AWS Managed : Only Data transfer applicable
+Interface Endpoint : NIC Creates and need to pay per hour
+
+Endpoints also referred as "Private Links"
+
+---
+
+VPC peering : helps to establish the connectivity between multiple VPCs.
+
+Same Region VPC in Same Account
+Another Region VPC in Same Account
+Other Account VPC in same Region
+Other Account VPC in Other Region
+
+--> Source VPC and Destination VPC should not contains same CIDR range.
+--> 
+
+
+info			requester VPC			accepter VPC
+
+VPC ID			vpc-05d236fcca10be170	vpc-01eceb1f570ddab7d
+VPC CIDR		192.168.0.0/23			172.16.0.0/24
+Region ID		ap-south-1				ap-south-1
+Account ID		982424467695			828477980115
+
+--> We have to update the "Requester VPCs Route tables" with "Accepter CIDR range".. and Vice Versa..
+
+--> VPC peering is non-transitive peering.
+
+---
+
+AWS Direct Connect : Its a dedicated physical connectivity between our corporate network and AWS environment. 
+
+--> We will get connectivity from AWS parterned telecom provider.
+
+---
+
+Site-to-Site VPN Connection : 
+--> It needs internet.
+--> It needs a Dedicated firewall device. (Fortinet, watchguard, yamaha, f5, brracuda, sonicwall)
+
+1. Create a Virtual private Gateway (AWS Side Component)
+2. Create a Customer Gateway (Customer Side component - Firewall Public IP)
+3. Establish connection using above 2.. 
+
+
+---
+
+Transit Gateway : 
+
+Step 1 : Create a transit Gateway in Central networking account.
+
+Step 2 : Share it with Multiple AWS accounts (member Accounts) using RAM (Resource Access Manager) Service. now, switch to member accounts RAM service screen and accept the invitation.
+
+Step 3 : In CentralNW Account (Where TGW present), create a TGW Attachment and choose the local vpc.
+
+Step 4 : In Member accounts (aviz8), Create a transite gateway attachment with local VPCs desired subnets.
+
+Step 5 : Switch to CentralNW account, Choose/find Attachment and accept the attachment.
+
+Step 6 : Edit Member Accounts route table with "CentralNW" account's CIDR range.
+
+Step 7 : Edit CentralNW Accounts route table with member account's CIDR range.
+
+---
+
+If you are using IPv6 in your VPC configuration, Similar to NAT Gateway, We can use "Igress only internet Gateway" to provide internet to Private subnet ec2 instances.
+
+---
+
+Can we extend an Existing VPCs CIDR range.?
+Ans : yes.. New IP range should be in same class, should not collide with existing CIDR range. 
+
+---
+
+RITM : Request Item : Ticket
+
+SNOW : Service Now (Alternative ; cherwell, ivanti....  Internal ticketing tool)
+
+REQ00123 --> Overall request / new user req
+	RITM001230 --> laptop
+	RITM001230 --> Headset	
+
+---
+
+SDLC : Software Development Life cycle : 
+
+Dev : ..??? AWS
+QA : ..??? AWS
+UAT : ..??? AWS
+PRD : ..??? AWS
+C NW : ..??? AWS
+Central logging : All account logs stores here.. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
